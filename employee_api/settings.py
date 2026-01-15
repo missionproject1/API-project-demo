@@ -26,6 +26,16 @@ SECRET_KEY = 'django-insecure-sx0$0xreizn)1^fm**ef_jn&xm)#56t2-49%x%j^budvrn!8*2
 DEBUG = True
 
 ALLOWED_HOSTS = []
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-secret-key")
+
+DEBUG = os.environ.get("DEBUG") == "True"
+
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
 
 
 # Application definition
